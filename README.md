@@ -23,6 +23,8 @@ l.Error("Something bad happened...")
 
 l.SetLevel(logmatic.TRACE)
 l.Trace("Now this will display")
+
+l.Fatal("The application will now exit")
 ```
 
 ![Example results](example.png?raw=true "Example results")
