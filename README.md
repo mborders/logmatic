@@ -24,3 +24,5 @@ l.Error("Something bad happened...")
 l.SetLevel(logmatic.TRACE)
 l.Trace("Now this will display")
 ```
+
+![Example results](example.png?raw=true "Example results")
