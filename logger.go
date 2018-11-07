@@ -31,7 +31,7 @@ func (l *Logger) now() string {
 }
 
 func (l *Logger) log(level string, format string, a ...interface{}) {
-	printf("%s %14s %s %s\n",
+	printf("%s %s %s %s\n",
 		color.MagentaString(l.now()),
 		level,
 		color.MagentaString("=>"),
