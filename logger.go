@@ -2,12 +2,14 @@ package logmatic
 
 import (
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/fatih/color"
 )
 
 var printf = fmt.Printf
+var exit = os.Exit
 
 // logFunc represents a log function
 type logFunc func(a ...interface{}) string
@@ -21,6 +23,7 @@ type Logger struct {
 	info  logFunc
 	warn  logFunc
 	error logFunc
+	fatal logFunc
 }
 
 func (l *Logger) now() string {
@@ -75,7 +78,16 @@ func (l *Logger) Warn(format string, a ...interface{}) {
 // Error logs an error statement
 // ERROR or lower (any level)
 func (l *Logger) Error(format string, a ...interface{}) {
-	l.log(l.error("ERROR"), format, a...)
+	if l.level <= ERROR {
+		l.log(l.error("ERROR"), format, a...)
+	}
+}
+
+// Fatal logs an error statement and exits the application
+// FATAL or lower (any level)
+func (l *Logger) Fatal(format string, a ...interface{}) {
+	l.log(l.fatal("FATAL"), format, a...)
+	exit(1)
 }
 
 // NewLogger creates a new logger
@@ -88,5 +100,6 @@ func NewLogger() *Logger {
 		info:  color.New(color.FgCyan).SprintFunc(),
 		warn:  color.New(color.FgYellow).SprintFunc(),
 		error: color.New(color.FgRed).SprintFunc(),
+		fatal: color.New(color.FgRed, color.Bold).SprintFunc(),
 	}
 }

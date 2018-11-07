@@ -98,3 +98,23 @@ func TestLogger_Error_Print(t *testing.T) {
 	l.Error("Error")
 	assert.NotEmpty(t, buf)
 }
+
+func TestLogger_Error_NoPrint(t *testing.T) {
+	var buf bytes.Buffer
+	mockPrint(&buf)
+
+	l := NewLogger()
+	l.SetLevel(FATAL)
+	l.Error("Error")
+	assert.Empty(t, buf)
+}
+
+func TestLogger_Fatal_Print(t *testing.T) {
+	var buf bytes.Buffer
+	mockPrint(&buf)
+	exit = func(code int) {}
+
+	l := NewLogger()
+	l.Fatal("Fatal")
+	assert.NotEmpty(t, buf)
+}
