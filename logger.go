@@ -17,13 +17,14 @@ type logFunc func(a ...interface{}) string
 // Logger maintains a set of logging functions
 // and has a log level that can be modified dynamically
 type Logger struct {
-	level LogLevel
-	trace logFunc
-	debug logFunc
-	info  logFunc
-	warn  logFunc
-	error logFunc
-	fatal logFunc
+	level       LogLevel
+	trace       logFunc
+	debug       logFunc
+	info        logFunc
+	warn        logFunc
+	error       logFunc
+	fatal       logFunc
+	ExitOnFatal bool
 }
 
 func (l *Logger) now() string {
@@ -87,19 +88,23 @@ func (l *Logger) Error(format string, a ...interface{}) {
 // FATAL or lower (any level)
 func (l *Logger) Fatal(format string, a ...interface{}) {
 	l.log(l.fatal("FATAL"), format, a...)
-	exit(1)
+
+	if l.ExitOnFatal {
+		exit(1)
+	}
 }
 
 // NewLogger creates a new logger
 // Default level is INFO
 func NewLogger() *Logger {
 	return &Logger{
-		level: INFO,
-		trace: color.New(color.FgBlue).SprintFunc(),
-		debug: color.New(color.FgGreen).SprintFunc(),
-		info:  color.New(color.FgCyan).SprintFunc(),
-		warn:  color.New(color.FgYellow).SprintFunc(),
-		error: color.New(color.FgRed).SprintFunc(),
-		fatal: color.New(color.FgRed, color.Bold).SprintFunc(),
+		level:       INFO,
+		trace:       color.New(color.FgBlue).SprintFunc(),
+		debug:       color.New(color.FgGreen).SprintFunc(),
+		info:        color.New(color.FgCyan).SprintFunc(),
+		warn:        color.New(color.FgYellow).SprintFunc(),
+		error:       color.New(color.FgRed).SprintFunc(),
+		fatal:       color.New(color.FgRed, color.Bold).SprintFunc(),
+		ExitOnFatal: true,
 	}
 }
