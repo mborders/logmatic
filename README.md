@@ -1,13 +1,13 @@
-[![GoDoc](http://godoc.org/github.com/borderstech/logmatic?status.png)](http://godoc.org/github.com/borderstech/logmatic)
-[![Build Status](https://travis-ci.org/borderstech/logmatic.svg?branch=master)](https://travis-ci.org/borderstech/logmatic)
-[![Go Report Card](https://goreportcard.com/badge/github.com/borderstech/logmatic)](https://goreportcard.com/report/github.com/borderstech/logmatic)
-[![codecov](https://codecov.io/gh/borderstech/logmatic/branch/master/graph/badge.svg)](https://codecov.io/gh/borderstech/logmatic)
+[![GoDoc](http://godoc.org/github.com/mborders/logmatic?status.png)](http://godoc.org/github.com/mborders/logmatic)
+[![Build Status](https://travis-ci.org/mborders/logmatic.svg?branch=master)](https://travis-ci.org/mborders/logmatic)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mborders/logmatic)](https://goreportcard.com/report/github.com/mborders/logmatic)
+[![codecov](https://codecov.io/gh/mborders/logmatic/branch/master/graph/badge.svg)](https://codecov.io/gh/mborders/logmatic)
 
 # logmatic
 
 Colorized logger for Golang with dynamic log level configuration
 
-Documentation here: https://godoc.org/github.com/borderstech/logmatic
+Documentation here: https://godoc.org/github.com/mborders/logmatic
 
 ## Example Usage
 

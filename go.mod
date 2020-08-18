@@ -1,4 +1,4 @@
-module github.com/borderstech/logmatic
+module github.com/mborders/logmatic
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
