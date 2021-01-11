@@ -1,5 +1,7 @@
 module github.com/mborders/logmatic
 
+go 1.15
+
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fatih/color v1.7.0
